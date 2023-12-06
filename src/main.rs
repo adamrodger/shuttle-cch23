@@ -2,6 +2,7 @@ use axum::{http::StatusCode, routing::get, Router};
 
 mod day01;
 mod day04;
+mod day06;
 
 #[shuttle_runtime::main]
 async fn main() -> shuttle_axum::ShuttleAxum {
@@ -9,7 +10,8 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         .route("/", get(hello_world))
         .route("/-1/error", get(error))
         .nest("/1", day01::router())
-        .nest("/4", day04::router());
+        .nest("/4", day04::router())
+        .nest("/6", day06::router());
 
     Ok(router.into())
 }
